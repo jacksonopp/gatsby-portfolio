@@ -1,31 +1,29 @@
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
+import GoBackLink from '../../components/GoBackLink'
 import Layout from '../../components/layout'
 import { IBlogPost } from '../../queries/blogpost'
 
-interface Props {
-  data: IBlogPost
+interface Props extends PageProps {
+  data: IBlogPost,
+  page: PageProps
 }
 
-const BlogPost: React.FC<Props> = ({data}) => {
+const BlogPost: React.FC<Props> = ({data, location}) => {
 
   const image = getImage(data.mdx.frontmatter.hero_image)
-  console.log(image)
+  console.log(location)
 
   return (
-    <Layout pageTitle="Blog post">
+    <Layout pageTitle='Blog post'>
+      <GoBackLink>&larr; Go back</GoBackLink>
       <p>{data.mdx.frontmatter.date}</p>
-      <GatsbyImage 
-        image={image}
-        alt={data.mdx.frontmatter.hero_image_alt}
-      />
-      <MDXRenderer>
-        {data.mdx.body}
-      </MDXRenderer>
+      <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
+      <MDXRenderer>{data.mdx.body}</MDXRenderer>
     </Layout>
-  )
+  );
 }
 
 export const GetPost = graphql`
