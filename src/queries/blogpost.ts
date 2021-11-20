@@ -1,9 +1,14 @@
-import { graphql } from 'gatsby';
+import { FileSystemNode } from 'gatsby-source-filesystem'
 
 export interface AllBlogPosts {
-  allFile: {
+  allMdx: {
     nodes: {
-      name: string
+      frontmatter: {
+        date: string,
+        title: string
+      },
+      id: string,
+      body: string
     }[]
   }
 }
