@@ -1,5 +1,3 @@
-import { FileSystemNode } from 'gatsby-source-filesystem'
-
 export interface AllBlogPosts {
   allMdx: {
     nodes: {
@@ -8,7 +6,17 @@ export interface AllBlogPosts {
         title: string
       },
       id: string,
-      body: string
+      slug: string
     }[]
+  }
+}
+
+export interface blogPost {
+  mdx: {
+    frontmatter: {
+      date: string,
+      title: string
+    },
+    body: string
   }
 }

@@ -1,14 +1,14 @@
 import React from 'react'
-import Layout from '../components/layout'
-import { graphql } from 'gatsby'
-import { AllBlogPosts } from '../queries/blogpost'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Layout from '../../components/layout'
+import { graphql, Link } from 'gatsby'
+import { AllBlogPosts } from '../../queries/blogpost'
 
 interface Props {
   data: AllBlogPosts
 }
 
 const BlogPage: React.FC<Props> = ({data}) => {
+
   return (
     <Layout pageTitle="Blog">
       {data.allMdx.nodes.map((post) => (
@@ -17,9 +17,7 @@ const BlogPage: React.FC<Props> = ({data}) => {
             <h2 className="text-2xl text-purple-700">{post.frontmatter.title}</h2>
             <p className="text-purple-700 text-xs align-baseline">Posted: {post.frontmatter.date}</p>
           </header>
-          <MDXRenderer>
-            {post.body}
-          </MDXRenderer>
+          <Link to={post.slug} className="hover:underline">Read post &rarr;</Link>
         </article>
       ))}
     </Layout>
@@ -35,7 +33,7 @@ export const allPosts = graphql`
           title
         }
         id
-        body
+        slug
       }
     }
   }
