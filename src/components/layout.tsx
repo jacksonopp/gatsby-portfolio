@@ -1,6 +1,5 @@
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
-import { navLink } from './layout.module.css';
 
 interface Props {
   pageTitle: string;
@@ -26,17 +25,17 @@ const Layout: React.FC<Props> = ({ pageTitle, children }) => {
         <header className="">{data.site.siteMetadata.title}</header>
         <ul className='flex gap-4'>
           <li>
-            <Link to='/' className={navLink}>
+            <Link to='/' className='link'>
               Home
             </Link>
           </li>
           <li>
-            <Link to='/about' className={navLink}>
+            <Link to='/about' className='link'>
               About
             </Link>
           </li>
           <li>
-            <Link to='/blog' className={navLink}>
+            <Link to='/blog' className='link'>
               Blog
             </Link>
           </li>
