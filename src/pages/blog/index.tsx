@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from '../../components/layout'
 import { graphql, Link } from 'gatsby'
-import { AllBlogPosts } from '../../queries/blogpost'
+import { IAllBlogPosts } from '../../queries/blogpost'
 
 interface Props {
-  data: AllBlogPosts
+  data: IAllBlogPosts
 }
 
 const BlogPage: React.FC<Props> = ({data}) => {

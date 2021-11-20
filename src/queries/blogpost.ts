@@ -1,4 +1,6 @@
-export interface AllBlogPosts {
+import { ImageDataLike } from "gatsby-plugin-image";
+
+export interface IAllBlogPosts {
   allMdx: {
     nodes: {
       frontmatter: {
@@ -11,11 +13,14 @@ export interface AllBlogPosts {
   }
 }
 
-export interface blogPost {
+export interface IBlogPost {
   mdx: {
     frontmatter: {
       date: string,
-      title: string
+      title: string,
+      hero_image_credit_text: string,
+      hero_image_alt: string,
+      hero_image: ImageDataLike
     },
     body: string
   }
