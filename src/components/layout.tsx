@@ -1,9 +1,11 @@
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
+import tw from 'twin.macro'
 
 interface Props {
   pageTitle: string;
 }
+
 
 const Layout: React.FC<Props> = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
